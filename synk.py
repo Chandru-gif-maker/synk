@@ -1,4 +1,8 @@
-@app.after_request
-def set_csp(response):
-    response.headers['Content-Security-Policy'] = "default-src 'self'"
-    return response
+from flask import Flask, request
+
+app = Flask(_name_)
+
+@app.route("/")
+def index():
+    name = request.args.get("name", "")
+    return f"<h1>Welcome, {name}</h1>"  
